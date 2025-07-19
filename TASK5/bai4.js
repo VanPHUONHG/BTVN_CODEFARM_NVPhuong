@@ -3,7 +3,7 @@ function printChristmasTree(n, character) {
     console.log("n là số nguyên dương nhỏ hơn 100");
     return;
   }
-  if (typeof character !== String || character.lenght !== 1) {
+  if (typeof character !== "string" || character.length !== 1) {
     console.log("character là một ký tự.");
     return;
   }
