@@ -4,7 +4,7 @@
 // Input:
 function findSecondLargestNumber(arr) {
   if (!Array.isArray(arr) || arr.length < 2) {
-    return -1;
+    return ;
   }
   //luu so lon nhat
   let max = -Infinity;
@@ -25,7 +25,7 @@ function findSecondLargestNumber(arr) {
   }
   //buoc 3: neu khong co so lon hon 2 thi tra ve false
   if (max2 === -Infinity) {
-    return -1;
+    return null;
   }
   return max2;
 }
