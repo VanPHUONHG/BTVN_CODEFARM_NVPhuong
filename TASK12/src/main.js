@@ -29,7 +29,6 @@ fetch(url)
     });
     productsList.innerHTML = content;
 
-    // Delete button event listeners
     document.querySelectorAll(".delete-btn").forEach((button) => {
       button.addEventListener("click", function () {
         const productId = this.getAttribute("data-id");
@@ -49,20 +48,17 @@ fetch(url)
       });
     });
 
-    // Update button event listeners
     document.querySelectorAll(".update-btn").forEach((button) => {
       button.addEventListener("click", function () {
         const productId = this.getAttribute("data-id");
         const productName = this.getAttribute("data-name");
         const productPrice = this.getAttribute("data-price");
 
-        // Populate form with product data
         nameInput.value = productName;
         priceInput.value = productPrice;
         isUpdateMode = true;
         currentProductId = productId;
 
-        // Change form submit button text to indicate update mode
         formProducts.querySelector('button[type="submit"]').textContent =
           "Cập nhật sản phẩm";
       });
@@ -79,7 +75,6 @@ formProducts.addEventListener("submit", function (event) {
   const data = Object.fromEntries(formData);
   console.log(data);
 
-  // Validate product name
   if (!data.name || data.name.trim().length === 0) {
     alert("Tên sản phẩm không được để trống!");
     return;
@@ -89,7 +84,6 @@ formProducts.addEventListener("submit", function (event) {
     return;
   }
 
-  // Validate price
   const price = parseFloat(data.price);
   if (isNaN(price) || price <= 0) {
     alert("Giá sản phẩm phải lớn hơn 0!");
@@ -100,7 +94,6 @@ formProducts.addEventListener("submit", function (event) {
     return;
   }
 
-  // Determine whether to POST (add) or PUT (update)
   const method = isUpdateMode ? "PUT" : "POST";
   const endpoint = isUpdateMode ? `${url}/${currentProductId}` : url;
 
@@ -117,7 +110,6 @@ formProducts.addEventListener("submit", function (event) {
         isUpdateMode ? "Update successful:" : "Add successful:",
         data
       );
-      // Reset form and mode after submission
       formProducts.reset();
       formProducts.querySelector('button[type="submit"]').textContent =
         "Thêm sản phẩm";
