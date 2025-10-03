@@ -2,12 +2,11 @@ import React, { useState } from "react";
 
 const Game = () => {
   const [numPlayers, setNumPlayers] = useState(0); // số lượng người chơi
-  const [players, setPlayers] = useState([]); // thông tin người chơi
-  const [currentTurn, setCurrentTurn] = useState(0); // lượt hiện tại
-  const [history, setHistory] = useState([]); // lịch sử tung xúc xắc
-  const [winner, setWinner] = useState(null); // người thắng
+  const [players, setPlayers] = useState([]);
+  const [currentTurn, setCurrentTurn] = useState(0);
+  const [history, setHistory] = useState([]);
+  const [winner, setWinner] = useState(null);
 
-  // Khởi tạo người chơi
   const startGame = () => {
     if (numPlayers < 2 || numPlayers > 6) {
       alert("Vui lòng chọn từ 2 đến 6 người chơi!");
@@ -26,7 +25,7 @@ const Game = () => {
 
   // Tung xúc xắc
   const rollDice = () => {
-    if (winner) return; // có người thắng thì dừng
+    if (winner) return;
     const dice = Math.floor(Math.random() * 6) + 1;
 
     setPlayers((prev) => {
@@ -41,19 +40,16 @@ const Game = () => {
       return updated;
     });
 
-    // Lưu lịch sử
     setHistory((prev) => [
       ...prev,
       `${players[currentTurn].name} tung được ${dice}`,
     ]);
 
-    // Nếu không phải số 6 thì chuyển lượt
     if (dice !== 6 && !winner) {
       setCurrentTurn((prev) => (prev + 1) % players.length);
     }
   };
 
-  // Reset game
   const resetGame = () => {
     setNumPlayers(0);
     setPlayers([]);
