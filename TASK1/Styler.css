@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  font-size: 14px;
+}
+
+.image-section {
+  border-radius: 45px 0px 0px 45px;
+  object-fit: cover;
+}
+
+.form-section {
+  margin: auto;
+  gap: 20px;
+}
+
+.form-section .form-headline {
+  margin-bottom: 64px;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section form .form-item input {
+  border: 1px solid grey;
+  width: 100%;
+}
+
+.form-section form .label-group {
+  display: flex;
+}
+
+.form-section form input,
+.form-section form button {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form-section form button {
+  border: none;
+  background-color: #3a5b22;
+  color: white;
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+}
+
+.form-section form button:hover {
+  background-color: #395327;
+}
+
+.section-divider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.section-divider span {
+  padding: 0 12px;
+  color: black;
+  font-size: 14px;
+  flex-basis: 30%;
+}
+
+.section-divider hr {
+  flex-basis: 40%;
+}
+
+.btn-group {
+  display: flex;
+  gap: 23px;
+}
+
+.btn-group a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  gap: 10px;
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all ease-in-out 0.4s;
+}
+
+.btn-group a img {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-group a:hover {
+  border: 1px solid black;
+}
+
+.signup-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #0c2a92;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.label-row label {
+  font-weight: 600;
+  color: #333;
+}
+
+.label-row a {
+  font-size: 13px;
+  color: #0c2a92;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.label-row a:hover {
+  text-decoration: underline;
+  color: #062b7d;
+}

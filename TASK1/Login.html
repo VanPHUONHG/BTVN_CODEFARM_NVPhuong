@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./Styler.css" />
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="form-section">
+        <div class="form-headline">
+          <h1>Welcome back!</h1>
+          <span>Enter your Credentials to access your account</span>
+        </div>
+
+        <form>
+          <div class="form-item">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="form-item">
+            <div class="label-row">
+              <label for="password">Password</label>
+              <a href="#">Forgot password?</a>
+            </div>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <div class="label-group">
+            <input type="checkbox" id="terms" />
+            <label for="terms"> Remember for 30 days </label>
+          </div>
+
+          <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="section-divider">
+          <hr />
+          <span>Or</span>
+          <hr />
+        </div>
+
+        <div class="btn-group">
+          <a href="#">
+            <img
+              src="https://img.icons8.com/?size=100&id=V5cGWnc9R4xj&format=png&color=000000"
+              alt="Google"
+            />
+            Sign in with Google
+          </a>
+
+          <a href="#">
+            <img
+              src="https://img.icons8.com/?size=100&id=30840&format=png&color=000000"
+              alt="Apple"
+            />
+            Sign in with Apple
+          </a>
+        </div>
+
+        <div class="signup-link">
+          <span>
+            Have an account?
+            <a href="#">Sign In</a>
+          </span>
+        </div>
+      </div>
+
+      <img
+        class="image-section"
+        src="https://images.unsplash.com/photo-1525498128493-380d1990a112?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0"
+        alt="Register Illustration"
+      />
+    </div>
+  </body>
+</html>
