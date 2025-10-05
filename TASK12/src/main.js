@@ -17,7 +17,7 @@ fetch(url)
     let content = "";
     data.forEach((item) => {
       content += `
-      <tr>
+      <tr>  
         <td>${item.id}</td>
         <td>${item.name}</td>
         <td>${item.price}</td>
