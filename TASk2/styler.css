@@ -16,22 +16,24 @@ body {
 .card {
   background-color: #fff;
   border-radius: 20px;
-  padding: 30px;
-  width: 550px;
+  padding: 50px;
+  width: 610px;
+  box-shadow: 0px 20px 40px rgba(253, 245, 248, 0.15);
 }
 
 .profile {
   display: flex;
   align-items: flex-start;
-  gap: 25px;
+  gap: 16px;
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 114px;
+  height: 114px;
   border-radius: 50%;
   object-fit: cover;
-  margin-top: -12px;
+  margin-top: 50px;
+  margin-left: 50px;
 }
 
 .info {
@@ -40,35 +42,35 @@ body {
 }
 
 .name {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
+  margin-top: 74px;
 }
 
 .role {
-  font-size: 15px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 28px;
 }
 
 .stats {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
   margin-bottom: 12px;
 }
 
 .stat {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 15px;
+  gap: 4px;
+  font-size: 16px;
   color: #1e2b5e;
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 25px;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
@@ -78,15 +80,14 @@ body {
 }
 
 .bio {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.7;
-  color: #1e2b5e;
-  margin: 10px 0 15px 0;
-  max-width: 270px;
+  max-width: 350px;
+  margin-top: 26px;
 }
 
 .btn {
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: 6px;
   border: 1px solid #cfd7eb;
   background-color: #fff;
@@ -95,6 +96,7 @@ body {
   cursor: pointer;
   transition: 0.2s ease;
   align-self: flex-start;
+  margin-top: 28px;
 }
 
 .btn:hover {
