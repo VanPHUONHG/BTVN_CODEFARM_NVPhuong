@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Form, Link } from "react-router-dom";
 
-const ProductList = () => {
+const Important = ({ showImportant = false }) => {
   const [todos, setTodos] = useState([]);
   const [currPage, setCurrPage] = useState(1);
   const [filter, setFilter] = useState("all");
   const [sortOrder, setSortOrder] = useState("none");
   const [search, setSearch] = useState("");
-  const itemsPerPage = 4;
+  const itemsPerPage = 6;
 
   // Lấy dữ liệu từ API
   useEffect(() => {
-    fetch("https://api-class-o1lo.onrender.com/api/v1/todos")
+    fetch("https://api-class-o1lo.onrender.com/api/v1/todos/?priority=3")
       .then((res) => res.json())
       .then((data) => {
         setTodos(data.data || []);
@@ -45,6 +46,8 @@ const ProductList = () => {
   const filteredData = todos
     .filter((item) => item.name?.toLowerCase().includes(search.toLowerCase()))
     .filter((item) => {
+      if (showImportant) return item.priority === 3;
+
       if (filter === "low") return item.priority === 1;
       if (filter === "medium") return item.priority === 2;
       if (filter === "high") return item.priority === 3;
@@ -70,47 +73,49 @@ const ProductList = () => {
         Danh Sách Việc Cần Làm
       </h1>
       {/* Tìm kiếm */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-        <input
-          type="text"
-          placeholder="🔍 Tìm kiếm công việc..."
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setCurrPage(1);
-          }}
-          className="w-full md:w-1/3 px-4 py-2 rounded-lg bg-gray-800 border border-pink-400/40 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
-        />
+      {!showImportant && (
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+          <input
+            type="text"
+            placeholder="🔍 Tìm kiếm công việc..."
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrPage(1);
+            }}
+            className="w-full md:w-1/3 px-4 py-2 rounded-lg bg-gray-800 border border-pink-400/40 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
+          />
 
-        {/* Lọc */}
-        <select
-          value={filter}
-          onChange={(e) => {
-            setFilter(e.target.value);
-            setCurrPage(1);
-          }}
-          className="w-full md:w-1/3 px-4 py-2 rounded-lg bg-gray-800 border border-purple-400/40 focus:ring-2 focus:ring-purple-500"
-        >
-          <option value="all">Tất cả mức độ ưu tiên</option>
-          <option value="low">Thấp</option>
-          <option value="medium">Trung bình</option>
-          <option value="high">Cao</option>
-        </select>
+          {/* Lọc */}
+          <select
+            value={filter}
+            onChange={(e) => {
+              setFilter(e.target.value);
+              setCurrPage(1);
+            }}
+            className="w-full md:w-1/3 px-4 py-2 rounded-lg bg-gray-800 border border-purple-400/40 focus:ring-2 focus:ring-purple-500"
+          >
+            <option value="all">Tất cả mức độ ưu tiên</option>
+            <option value="low">Thấp</option>
+            <option value="medium">Trung bình</option>
+            <option value="high">Cao</option>
+          </select>
 
-        {/* Sắp xếp */}
-        <select
-          value={sortOrder}
-          onChange={(e) => {
-            setSortOrder(e.target.value);
-            setCurrPage(1);
-          }}
-          className="w-full md:w-1/3 px-4 py-2 rounded-lg bg-gray-800 border border-indigo-400/40 focus:ring-2 focus:ring-indigo-500"
-        >
-          <option value="none">Không sắp xếp</option>
-          <option value="asc">Ưu tiên tăng dần</option>
-          <option value="desc">Ưu tiên giảm dần</option>
-        </select>
-      </div>
+          {/* Sắp xếp */}
+          <select
+            value={sortOrder}
+            onChange={(e) => {
+              setSortOrder(e.target.value);
+              setCurrPage(1);
+            }}
+            className="w-full md:w-1/3 px-4 py-2 rounded-lg bg-gray-800 border border-indigo-400/40 focus:ring-2 focus:ring-indigo-500"
+          >
+            <option value="none">Không sắp xếp</option>
+            <option value="asc">Ưu tiên tăng dần</option>
+            <option value="desc">Ưu tiên giảm dần</option>
+          </select>
+        </div>
+      )}
 
       {/* Danh sách công việc */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -121,7 +126,21 @@ const ProductList = () => {
               className="bg-gray-900/80 rounded-xl border border-purple-700/40 p-5 shadow-lg hover:border-pink-400 hover:shadow-pink-400/40 transition-all duration-300"
             >
               <h2 className="text-xl font-semibold text-pink-300 mb-1">
-                {item.name}
+                <Link
+                  to={`/todos/${item._id}`}
+                  state={{
+                    from: {
+                      pathName: "/todos",
+                      search,
+                      filter,
+                      sortOrder,
+                      currPage,
+                    },
+                  }}
+                  className="hover:text-pink-400 underline"
+                >
+                  {item.name}
+                </Link>
               </h2>
               <p className="text-sm text-gray-300 mb-2">
                 {item.description || "Không có mô tả"}
@@ -173,6 +192,13 @@ const ProductList = () => {
         <span className="font-bold text-lg">
           {currPage}/{totalPage}
         </span>
+        <select name="" id="">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+        </select>
         <button
           onClick={nextPage}
           disabled={currPage === totalPage}
@@ -185,4 +211,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default Important;
