@@ -1,6 +1,7 @@
 // src/pages/Todos.jsx
 import React, { useEffect, useState } from "react";
 import FuncitonProducts from "./FuncitonProducts";
+import { Link } from "react-router-dom";
 
 const Todos = () => {
   const [todos, setTodos] = useState([]);
@@ -119,7 +120,15 @@ const Todos = () => {
           <option value="desc">Ưu tiên giảm dần</option>
         </select>
 
-        <button onClick={resetFilter}>Reset</button>
+        <button
+          onClick={resetFilter}
+          className="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-teal-400 text-white font-semibold rounded-xl shadow-md hover:from-blue-600 hover:to-teal-500 transition-all duration-300 ease-in-out focus:ring-4 focus:ring-teal-300 active:scale-95"
+        >
+          Reset /
+        </button>
+        <button>
+          <Link to="/add">Theem</Link>
+        </button>
       </div>
 
       {/* Hiển thị danh sách công việc */}

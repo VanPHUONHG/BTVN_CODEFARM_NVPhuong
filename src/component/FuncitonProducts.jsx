@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 
 const FuncitonProducts = ({ todos = [] }) => {
   const getStatus = (item) => {
-    if (item.completed) return "Hoàn thành ✅";
-    const now = new Date();
-    const due = new Date(item.dueDate);
-    return now > due ? "Quá hạn ❌" : "Đang thực hiện ⏳";
+    console.log(item);
+    return item.isCompleted ? "Hoàn thành ✅" : "Dang thuc hien";
+    // if (item.completed) return "Hoàn thành ✅";
+    // const now = new Date();
+    // const due = new Date(item.dueDate);
+    // return now > due ? "Quá hạn ❌" : "Đang thực hiện ⏳";
   };
 
   const getPriorityText = (p) => {

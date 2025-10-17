@@ -2,13 +2,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "../page/NotFoundPage";
 import MainRouter from "./MainRouter";
 
-let route = createBrowserRouter([
+let router = createBrowserRouter([
   ...MainRouter,
-  { path: "*", element: <NotFoundPage /> },
+  { path: "*", element: NotFoundPage },
 ]);
 
 const AppRouter = () => {
-  return <RouterProvider router={route} />;
+  return <RouterProvider router={router} />;
 };
 
 export default AppRouter;

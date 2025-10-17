@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 const TodoDetailPage = () => {
   const { id } = useParams();
@@ -37,12 +37,22 @@ const TodoDetailPage = () => {
           {products.completed ? "✅ Hoàn thành" : "⏳ Đang thực hiện"}
         </p>
 
-        <button
-          onClick={() => navigate(location.state?.from || "/todos")}
-          className="mt-8 bg-pink-600 px-6 py-2 rounded-lg hover:bg-pink-700 font-semibold"
-        >
-          ← Quay lại
-        </button>
+        <div className="flex gap-4 mt-8">
+          <button
+            onClick={() => navigate(location.state?.from || "/todos")}
+            className="bg-pink-600 px-6 py-2 rounded-lg hover:bg-pink-700 font-semibold"
+          >
+            ← Quay lại
+          </button>
+
+          {/* ✅ Link sửa công việc */}
+          <Link
+            to={`/todos/update/${id}`}
+            className="bg-indigo-600 px-6 py-2 rounded-lg hover:bg-indigo-700 font-semibold"
+          >
+            ✏️ Sửa
+          </Link>
+        </div>
       </div>
     </div>
   );
