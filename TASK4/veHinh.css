@@ -1,0 +1,81 @@
+body {
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 175px;
+}
+
+.semi-circles {
+  width: 200px;
+  height: 100px;
+  background-color: rgb(154, 215, 169);
+  position: relative;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+}
+.semi-circle-left1 {
+  width: 200px;
+  height: 100px;
+  background-color: #e66d3a;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-bottom-left-radius: 200px;
+  border-bottom-right-radius: 200px;
+}
+.semi-circle-left2 {
+  width: 200px;
+  height: 100px;
+  background-color: rgb(14, 154, 193);
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+}
+.semi-circle-left3 {
+  width: 200px;
+  height: 100px;
+  background-color: rgb(160, 89, 230);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-bottom-left-radius: 200px;
+  border-bottom-right-radius: 200px;
+}
+.heart {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: red;
+  transform: rotate(-45deg);
+  top: 40%;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
+}
