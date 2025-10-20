@@ -4,13 +4,15 @@ import TodoDetailPage from "../component/TodoDetail";
 import Todos from "../component/Todos";
 import FormPage from "../page/FormPage";
 import FormUpdateJob from "../page/FormUpdateJob";
+import Register from "../auth/Register";
+import Login from "../auth/Login";
 
 const MainRouter = [
   {
     path: "/",
     element: <MainLayout />,
     children: [
-      { index: true, element: <Navigate to={"todos"} /> },
+      { index: true, element: <Navigate to={"/auth/login"} /> },
       { path: "todos", element: <Todos /> },
       { path: "todos/:id", element: <TodoDetailPage /> },
       { path: "todos/add", element: <FormPage /> },
