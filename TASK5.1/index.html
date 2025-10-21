@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styler.css" />
+    <title>Hành Trình Của Tôi</title>
+  </head>
+  <body id="top">
+    <div class="particles">
+      <!-- Tạo hiệu ứng các hạt ánh sáng -->
+      <script>
+        for (let i = 0; i < 40; i++) {
+          const span = document.createElement("span");
+          const size = Math.random() * 6 + 2;
+          span.style.width = `${size}px`;
+          span.style.height = `${size}px`;
+          span.style.left = `${Math.random() * 100}%`;
+          span.style.top = `${Math.random() * 100 + 100}%`;
+          span.style.animationDuration = `${Math.random() * 8 + 6}s`;
+          document.querySelector(".particles").appendChild(span);
+        }
+      </script>
+    </div>
+
+    <header>
+      <div class="logo">🌌 HÀNH TRÌNH CỦA TÔI 🌠</div>
+      <nav>
+        <ul>
+          <li><a href="#2010">2010</a></li>
+          <li><a href="#2015">2015</a></li>
+          <li><a href="#2020">2020</a></li>
+          <li><a href="#2025">2025</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="2010">
+        <div class="year">2010</div>
+        <div class="content">
+          <h2>Bắt Đầu Hành Trình</h2>
+          <p>Năm đầu tiên đánh dấu sự khởi đầu của hành trình cá nhân.</p>
+          <ul>
+            <li>
+              <strong>Kỷ niệm:</strong> Rời xa gia đình để theo đuổi ước mơ.
+            </li>
+            <li>
+              <strong>Bài học:</strong> Sự kiên trì là chìa khóa vượt qua thử
+              thách.
+            </li>
+            <li><strong>Cột mốc:</strong> Hoàn thành khóa học đầu tiên.</li>
+            <li><strong>Dự án:</strong> Xây dựng kế hoạch 5 năm đầu đời.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="2015">
+        <div class="year">2015</div>
+        <div class="content">
+          <h2>Khám Phá Và Phát Triển</h2>
+          <p>Khám phá những lĩnh vực mới, trau dồi bản thân mạnh mẽ hơn.</p>
+          <ul>
+            <li><strong>Kỷ niệm:</strong> Tham gia dự án nhóm đầu tiên.</li>
+            <li><strong>Bài học:</strong> Học cách lắng nghe và chia sẻ.</li>
+            <li><strong>Cột mốc:</strong> Trở thành trưởng nhóm.</li>
+            <li><strong>Dự án:</strong> Ý tưởng kinh doanh nhỏ đầu tay.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="2020">
+        <div class="year">2020</div>
+        <div class="content">
+          <h2>Thử Thách Và Chiến Thắng</h2>
+          <p>
+            Đại dịch là cơ hội để tôi rèn luyện sự kiên cường và thích nghi.
+          </p>
+          <ul>
+            <li><strong>Kỷ niệm:</strong> Làm việc từ xa hiệu quả.</li>
+            <li><strong>Bài học:</strong> Linh hoạt là sức mạnh lớn nhất.</li>
+            <li>
+              <strong>Cột mốc:</strong> Đạt được mục tiêu lớn trong sự nghiệp.
+            </li>
+            <li>
+              <strong>Dự án:</strong> Xây dựng nền tảng kết nối cộng đồng.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="2025">
+        <div class="year">2025</div>
+        <div class="content">
+          <h2>Tương Lai Rực Rỡ</h2>
+          <p>Tiếp tục hành trình với khát vọng sáng tạo và bền vững.</p>
+          <ul>
+            <li>
+              <strong>Kỷ niệm:</strong> Cân bằng giữa công việc và cuộc sống.
+            </li>
+            <li><strong>Bài học:</strong> Biết ơn và luôn học hỏi.</li>
+            <li><strong>Cột mốc:</strong> Hợp tác quốc tế đầu tiên.</li>
+            <li><strong>Dự án:</strong> Ra mắt ứng dụng tích hợp AI.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <a href="#top" class="scroll-arrow" title="Cuộn lên đầu trang">↑</a>
+  </body>
+</html>
