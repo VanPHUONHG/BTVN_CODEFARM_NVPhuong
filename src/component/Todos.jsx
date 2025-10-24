@@ -29,7 +29,15 @@ const Todos = () => {
           .join("&");
 
         const res = await fetch(
-          `https://api-class-o1lo.onrender.com/api/v1/todos?${cleanupQuery}`
+          `https://api-class-o1lo.onrender.com/api/v1/todos?${cleanupQuery}`,
+          {
+            headers: {
+              Authorization: `Bearer ${
+                localStorage.getItem("accessToken") ||
+                sessionStorage.getItem("accessToken")
+              }`,
+            },
+          }
         );
         const { data, meta } = await res.json();
         setTodos(data || []);

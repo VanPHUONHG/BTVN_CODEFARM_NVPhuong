@@ -6,13 +6,18 @@ import FormPage from "../page/FormPage";
 import FormUpdateJob from "../page/FormUpdateJob";
 import Register from "../auth/Register";
 import Login from "../auth/Login";
+import PrivateRoute from "./protected/PrivateRoute";
 
 const MainRouter = [
   {
     path: "/",
-    element: <MainLayout />,
+    element: (
+      <PrivateRoute>
+        <MainLayout />
+      </PrivateRoute>
+    ),
     children: [
-      { index: true, element: <Navigate to={"/auth/login"} /> },
+      { index: true, element: <Navigate to={"/todos"} /> },
       { path: "todos", element: <Todos /> },
       { path: "todos/:id", element: <TodoDetailPage /> },
       { path: "todos/add", element: <FormPage /> },

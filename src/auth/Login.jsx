@@ -1,10 +1,9 @@
-// src/pages/Login.jsx
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import z from "zod";
 import { loginAuth } from "../api/apiAuth";
-import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,12 +26,28 @@ const Login = () => {
         email: data.email,
         password: data.password,
       });
-      toast.success("Đăng nhập thành công!");
-      if (data.agreeToTerms)
+      // console.log(res?.data?.accessToken);
+
+      if (data.agreeToTerms) {
         localStorage.setItem("user", JSON.stringify(res?.user ?? data));
+        localStorage.setItem(
+          "accessToken",
+          JSON.stringify(res?.data?.accessToken)
+        );
+      }
+      if (!data.agreeToTerms) {
+        sessionStorage.setItem("user", JSON.stringify(res?.user ?? data));
+        sessionStorage.setItem(
+          "accessToken",
+          JSON.stringify(res?.data?.accessToken)
+        );
+      }
+      // console.log(data);
+      toast.success("Đăng nhập thành công!");
+
       navigate("/todos");
     } catch (err) {
-      console.error(err);
+      console.log(err);
       const msg = err?.response?.data?.message || "Đăng nhập thất bại";
       toast.error(msg);
     }
@@ -40,18 +55,14 @@ const Login = () => {
 
   return (
     <div className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
-      {/* Hình Goku mờ chìm (absolute, dưới form) */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* ảnh nền lớn, mờ & làm mờ thêm bằng filter */}
         <div
           className="absolute inset-0 bg-center bg-no-repeat bg-cover opacity-20 filter blur-sm scale-110"
           style={{ backgroundImage: "url('/images/goku.png')" }}
         />
-        {/* overlay gradient để chữ dễ đọc */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60" />
       </div>
 
-      {/* Card login (z-index cao hơn) */}
       <div className="relative z-10 w-full max-w-md p-8 rounded-2xl bg-gray-800/70 border border-gray-700 shadow-2xl backdrop-blur-sm">
         <h2 className="text-3xl font-bold text-center mb-6 text-blue-300">
           🔐 Đăng nhập

@@ -1,9 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import z from "zod";
 import { registerAuth } from "../api/apiAuth";
-import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -41,7 +42,12 @@ const Register = () => {
   } = useForm({
     resolver: zodResolver(schema),
   });
-
+  useEffect(() => {
+    const hasErrors = Object.keys(errors).length > 0;
+    if (hasErrors) {
+      console.error("Form validation errors:", errors);
+    }
+  }, [errors]);
   const onSubmit = async (data) => {
     try {
       await registerAuth({
@@ -53,7 +59,7 @@ const Register = () => {
       setTimeout(() => navigate("/auth/login"), 1000);
     } catch (error) {
       console.log(error);
-      toast.error("Đăng ký thất bại. Vui lòng thử lại!");
+      toast.error(error.response.data.message);
     }
   };
 
@@ -98,7 +104,6 @@ const Register = () => {
             )}
           </div>
 
-          {/* Password */}
           <div>
             <label className="block text-sm font-semibold mb-1">Mật khẩu</label>
             <input
@@ -114,7 +119,6 @@ const Register = () => {
             )}
           </div>
 
-          {/* Confirm Password */}
           <div>
             <label className="block text-sm font-semibold mb-1">
               Xác nhận mật khẩu
@@ -132,7 +136,6 @@ const Register = () => {
             )}
           </div>
 
-          {/* Checkbox */}
           <div className="flex items-center">
             <input
               type="checkbox"
@@ -156,7 +159,6 @@ const Register = () => {
             </p>
           )}
 
-          {/* Submit button */}
           <button
             type="submit"
             className="w-full py-2 mt-4 bg-blue-600 hover:bg-blue-700 transition-all rounded-lg font-semibold text-white shadow-lg shadow-blue-500/30"
@@ -165,7 +167,6 @@ const Register = () => {
           </button>
         </form>
 
-        {/* Footer */}
         <p className="text-center text-sm text-gray-400 mt-6">
           Đã có tài khoản?{" "}
           <span
